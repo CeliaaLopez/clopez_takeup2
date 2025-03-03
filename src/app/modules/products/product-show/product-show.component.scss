@@ -1,0 +1,20 @@
+.imagenBurger img {
+  height: 32em;
+  max-height: 32em;
+}
+
+.rating {
+  width: 6em;
+  height: 1.1em;
+}
+
+.imgFav {
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+
+  img {
+    width: 2em;
+  }
+}

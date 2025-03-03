@@ -1,0 +1,32 @@
+  <div class="border-bottom">
+    <h2 class="text-center mb-4 mt-3">Productos similares</h2>
+    <div
+      *ngIf="
+        selectedProduct?.similarProducts?.length === 0 ||
+        selectedProduct?.similarProducts === undefined
+      "
+      class="text-center"
+    >
+      <p>No hay productos similares</p>
+    </div>
+    <div class="similar d-flex">
+      <div
+        *ngFor="let similar of selectedProduct?.similarProducts"
+        class="col-md-5 p-4 mb-3"
+      >
+        <div class="d-flex justify-content-center">
+          <img
+            src="assets/{{ similar.product }}.png"
+            alt="imagen de la hamburguesa {{ similar.product }}"
+          />
+          <div class="flex-column ms-4">
+            <h3 class="ms-1 mt-2">{{ similar.product }}</h3>
+            <div class="similarRating">
+              <img [src]="ratingImage" />
+            </div>
+            <p class="mt-3 ms-1">{{ similar.price }} {{ similar.currency }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

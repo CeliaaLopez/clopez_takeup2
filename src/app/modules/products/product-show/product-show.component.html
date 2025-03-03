@@ -1,0 +1,49 @@
+<div class="row border-bottom mx-0">
+  <div class="col-md-4 p-0">
+    <div *ngIf="selectedProduct">
+      <div class="imagenBurger">
+        <img
+          src="assets/{{ selectedProduct.product }}.png"
+          alt="imagen de la hamburguesa {{ selectedProduct.product }}"
+          class="w-100 border-bottom"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 ms-5 mt-5">
+    <div *ngIf="selectedProduct">
+      <div class="d-flex">
+        <h1>{{ selectedProduct.product }}</h1>
+        <button class="ms-5 imgFav mb-2" (click)="markProductFavorite()">
+          <img
+            src="assets/{{
+              selectedProduct.favorite ? 'favorite' : 'not-favorite'
+            }}.png"
+            alt="Botón producto favorito"
+          />
+        </button>
+      </div>
+
+      <div class="pb-4 mt-4 border-bottom">
+        <img
+          [src]="ratingImage"
+          class="rating mb-1"
+        />
+        <span class="ms-3">{{ selectedProduct.reviews.length }} Opiniones</span>
+      </div>
+      <p class="border-bottom pt-4 pb-4 fs-2">
+        {{ selectedProduct.price }} {{ selectedProduct.currency }}
+      </p>
+      <p class="w-75 pb-4 pt-3">{{ selectedProduct.description }}</p>
+      <p class="border-bottom w-25"></p>
+
+      <button
+        type="button"
+        class="btn btn-{{colorBottonDelete}} mt-2 mb-4"
+        (click)="deleteProductSelected(selectedProductIndex)"
+      >
+        Eliminar producto
+      </button>
+    </div>
+  </div>
+</div>

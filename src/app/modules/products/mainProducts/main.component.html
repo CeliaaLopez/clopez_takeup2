@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<div class="container-fluid border-bottom">
+  <div class="row">
+    <div class="col-md-2 p-0 border-end">
+      <app-products
+        [selectedProduct]="selectedProduct"
+        [filteredProducts]="filteredProducts"
+        [selectedProductIndex]="selectedProductIndex"
+        [colorBottonReview] = "colorBottonReview"
+        [colorBottonPrice] = "colorBottonPrice"
+        (productSelected)="selectProduct($event)"
+        (filterPrice)="filterByPrice()"
+        (filterReview)="filterByReview()"
+        (resetFilter)="resetFilter()"
+      ></app-products>
+    </div>
+    <div class="col-md-10 p-0 bg-{{background}} text-{{textColor}}">
+      <app-product-show
+        [selectedProduct]="selectedProduct"
+        [selectedProductIndex]="selectedProductIndex"
+        [colorBottonDelete] = "colorBottonDelete"
+        [ratingImage]="getRatingImage(selectedProduct.rating)"
+        (productFavorite)="productFavorite($event)"
+        (deleteProduct)="deleteProduct($event)"
+      ></app-product-show>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 p-0 border-end"></div>
+    <div class="col-md-10 p-0 bg-{{background}} text-{{textColor}}">
+      <app-products-similars
+        [selectedProduct]="selectedProduct"
+        [ratingImage]="getRatingImage(selectedProduct.rating)"
+      ></app-products-similars>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 p-0 border-end"></div>
+    <div class="col-md-10 p-0 bg-{{background}} text-{{textColor}}">
+      <app-product-reviews
+        [ratingImage]="getRatingImage(selectedProduct.rating)"
+        [selectedProduct]="selectedProduct"
+      ></app-product-reviews>
+    </div>
+  </div>
+</div>
+

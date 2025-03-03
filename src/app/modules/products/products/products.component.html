@@ -1,0 +1,38 @@
+<div class="p-0 ms-2 border-end">
+  <div class="d-flex flex-column columnProduct">
+    <button
+      type="button"
+      class="btn btn-{{colorBottonPrice}} w-50 ms-1 mb-3 mt-4"
+      (click)="filterByPrice()"
+    >
+      Menos de 15€
+    </button>
+    <button
+      type="button"
+      class="btn btn-{{colorBottonReview}} w-50 ms-1 mb-3 mt-1"
+      (click)="filterByReview()"
+    >
+      Con reseñas
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary w-50 ms-1 mb-4"
+      (click)="resetAllFilters()"
+    >
+      Reset Filter
+    </button>
+
+    <h4 class="ms-1 mb-4">Products</h4>
+    <div *ngFor="let product of filteredProducts; let index = index">
+      <div
+        (click)="selectProduct(index)"
+        class="d-flex justify-content-between align-items-center p-1 product-item productName"
+        [ngClass]="{ 'text-primary': selectedProductIndex === index, 'text-dark': selectedProductIndex !== index }"
+      >
+        <span class="fw-bold">{{ product.product }}</span>
+        <span class="mx-4 p-0">&gt;</span>
+      </div>
+      <hr class="mx-4 ms-1" />
+    </div>
+  </div>
+</div>

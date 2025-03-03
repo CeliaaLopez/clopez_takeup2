@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+  <div class="container-fluid mt-2">
+    <a class="navbar-brand logo ms-5" href="#">
+      <img src="/assets/hamburguesa.png" alt="logo tienda apple" class="navbar-icon" />
+    </a>
+    <button class="navbar-toggler mx-2 btn-navbar" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ms-auto text-center" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto d-flex align-items-center">
+        <a routerLinkActivate="activate" class="nav-link border-end px-4" href="/home">Home</a>
+        <a routerLinkActivate="activate" class="nav-link border-end px-4" href="/products">Burgers</a>
+        <router-outlet></router-outlet>
+        <form class="container-fluid mt-1 ">
+          <button type="button" class="btn btn-secondary mx-2 ps-1">
+            <img class="mb-1 mx-1" src="assets/carrito.png" alt="imagen carrito de la compra"> Tu Carrito
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</nav>

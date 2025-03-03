@@ -1,0 +1,30 @@
+.imgBackground {
+  background-image: url('/assets/parrilla.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 52vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  p{
+    color: rgb(112, 111, 111);
+  }
+  h2{
+    font-weight: bold;
+  }
+  input{
+    height: 3em;
+    border-radius: 0.4em;
+    width: 25em;
+    border: 0.15em solid rgb(184, 184, 184);
+  }
+  button{
+    font-weight: bold;
+    height: 2.5em;
+    width: 8em;
+    border-radius: 0.3em;
+  }
+}
+
