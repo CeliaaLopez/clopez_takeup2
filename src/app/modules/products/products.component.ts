@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import type { Product } from '../../../models/product';
+import type { Product } from '../../models/product';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss'],
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.scss'],
 })
-export class MainComponent {
+export class ProductsComponent {
   products: Product[] = [
     {
       product: 'Bacon',

@@ -2,11 +2,11 @@ import { Component, Input, Output, EventEmitter } from '@angular/core'
 import type { Product } from '../../../models/product';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-product',
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.scss']
 })
-export class ProductsComponent {
+export class ProductComponent {
   @Input() selectedProduct?: Product
   @Input() selectedProductIndex?: number
   @Input() colorBottonReview?: string
