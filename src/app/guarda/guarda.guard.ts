@@ -7,7 +7,7 @@ import type {
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-const isRouteActivated = false;
+const isRouteActivated = true;
 
 export const routeGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,

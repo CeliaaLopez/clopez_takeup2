@@ -29,7 +29,7 @@
         class="d-flex justify-content-between align-items-center p-1 product-item productName"
         [ngClass]="{ 'text-primary': selectedProductIndex === index, 'text-dark': selectedProductIndex !== index }"
       >
-        <span class="fw-bold">{{ product.product }}</span>
+        <span class="fw-bold">{{ product?.product }}</span>
         <span class="mx-4 p-0">&gt;</span>
       </div>
       <hr class="mx-4 ms-1" />

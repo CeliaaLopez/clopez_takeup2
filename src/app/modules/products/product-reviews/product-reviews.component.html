@@ -17,15 +17,15 @@
               class="me-3"
               />
               <div>
-                <h3 class="mt-2">{{ review.name }}</h3>
-                <p class="text-muted">{{ review.date }}</p>
+                <h3 class="mt-2">{{ review?.name }}</h3>
+                <p class="text-muted">{{ review?.date }}</p>
                 <div class="reviewRating">
                   <img class="mb-2" [src]="ratingImage" />
                 </div>
               </div>
             </div>
             <div class="col-md-8 d-flex mt-3">
-              <p class="text-end m-0">{{ review.opinion }}</p>
+              <p class="text-end m-0">{{ review?.opinion }}</p>
             </div>
         </div>
       </div>

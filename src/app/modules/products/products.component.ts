@@ -1,127 +1,65 @@
-import { Component } from '@angular/core';
-import type { Product } from '../../models/product';
+import { Component, OnInit } from '@angular/core';
+import { Product } from '../../models/product';
+import { ProductsService } from 'src/app/services/products.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent {
-  products: Product[] = [
-    {
-      product: 'Bacon',
-      price: 15.99,
-      currency: '€',
-      rating: 5,
-      favorite: false,
-      description:
-        'El auténtico best seller de esta casa. Picamos la carne en la plancha y la mezclamos con bacon, cebolla crunchy y queso americano. ¡Una vez que la pruebas no puedes dejar de pensar en ella!',
-      similarProducts: [
-        { product: 'Retro', price: 16.99, currency: '€', rating: 4.3 },
-        { product: 'Hat Trick', price: 16.99, currency: '€', rating: 2 },
-      ],
-      reviews: [
-        {
-          image: '',
-          name: 'Homer J. Simpson',
-          rating: 5,
-          opinion:
-            '¡Increíble! La carne jugosa y el bacon crujiente hacen una combinación perfecta.',
-          date: 'Ayer por la tarde, 2023',
-        },
-        {
-          image: '',
-          name: 'Marge Simpson',
-          rating: 5,
-          opinion:
-            'Me gustó mucho, aunque para mi gusto tenía demasiado bacon.',
-          date: 'Ayer por la tarde, 2023',
-        },
-      ],
-    },
-    {
-      product: 'Retro',
-      price: 14.99,
-      currency: '€',
-      rating: 4.3,
-      favorite: false,
-      description:
-        'Una receta clásica con carne, queso americano, cebolla morada a la plancha, tomate, lechuga batavia, pepinillos y nuestras salsas especiales.',
-      similarProducts: [
-        { product: 'Bacon', price: 15.99, currency: '€', rating: 5 },
-        { product: 'Donut', price: 20, currency: '€', rating: 3.8 },
-      ],
-      reviews: [
-        {
-          image: '',
-          name: 'Bart Simpson',
-          rating: 4.3,
-          opinion: 'Muy buena, aunque me hubiera gustado un poco más de salsa.',
-          date: 'Hace 2 días, 2023',
-        },
-      ],
-    },
-    {
-      product: 'Donut',
-      price: 20,
-      currency: '€',
-      rating: 3.8,
-      favorite: false,
-      description:
-        'La Golden Glaze: doble smash con mucho queso americano, bacon bits y un huevo frito entre dos donuts glaseados.',
-      reviews: [],
-    },
-    {
-      product: 'Hat Trick',
-      price: 14.99,
-      currency: '€',
-      rating: 2,
-      favorite: false,
-      description:
-        'Tres carnes smash, queso americano, queso scamorza ahumado, cebolla morada a la plancha y nuestra salsa especial.',
-      similarProducts: [
-        { product: 'Retro', price: 16.99, currency: '€', rating: 4.8 },
-        { product: 'Bacon', price: 15.99, currency: '€', rating: 5 },
-      ],
-      reviews: [
-        {
-          image: '',
-          name: 'Ned Flanders',
-          rating: 2,
-          opinion:
-            'Buena hamburguesa, pero me gustaría que la carne estuviera un poco más hecha.',
-          date: 'Hace 4 días, 2023',
-        },
-      ],
-    },
-  ];
-
-  defaultProduct = {
-    product: 'No disponemos de productos en stock',
-    price: 0,
-    currency: '',
-    rating: 0,
-    description: '',
-    favorite: false,
-    similarProducts: [],
-    reviews: [],
-  };
-
-  selectedProduct = this.products[0];
-  filteredProducts = [...this.products];
+export class ProductsComponent implements OnInit {
+  products: Product[] = [];
+  productsCast: Product[] = [];
+  selectedProduct!: Product;
+  filteredProducts: Product[] = [];
   selectedProductIndex: number = 0;
-
+  loading = true;
+  colorBtnAdd = 'secondary';
   background = '';
   textColor = '';
   colorBottonDelete = 'secondary';
-
   colorBottonReview = 'secondary';
   colorBottonPrice = 'secondary';
+  totalProducts = 0;
+
+  private colorBtnAddSubscription: Subscription = Subscription.EMPTY;
+
+  constructor(private productsService: ProductsService) {}
+
+  ngOnInit(): void {
+    this.productsService.getProducts().subscribe((data) => {
+      this.products = data;
+      this.filteredProducts = [...this.products];
+      this.loading = false;
+      if (this.products.length > 0) {
+        this.selectedProduct = this.products[0];
+        this.updateBackground();
+      }
+    });
+    this.productsService.getProductsAdd().subscribe((data) => {
+      this.totalProducts = data.length;
+      this.productsCast = data;
+    });
+  }
 
   selectProduct(index: number): void {
     this.selectedProductIndex = index;
     this.selectedProduct = this.filteredProducts[index];
     this.updateBackground();
+    this.colorBtnAdd = this.productsService.getColorForProduct(
+      this.selectedProduct
+    );
+  }
+
+  addProduct(index: number): void {
+    const productToAdd = this.productsService.getData()[index];
+    this.productsService.addProduct(productToAdd);
+    this.colorBtnAdd = this.productsService.getColorForProduct(productToAdd);
+  }
+
+  totalProductsAdd(): number {
+    return this.totalProducts;
   }
 
   updateBackground(): void {
@@ -191,11 +129,13 @@ export class ProductsComponent {
     this.filteredProducts.splice(index, 1);
     if (this.selectedProduct === productToDelete) {
       this.selectedProduct =
-        this.products.length > 0 ? this.products[0] : this.defaultProduct;
+        this.products.length > 0
+          ? this.products[0]
+          : this.productsService.getDefaultProduct();
       this.selectedProduct =
         this.filteredProducts.length > 0
           ? this.filteredProducts[0]
-          : this.defaultProduct;
+          : this.productsService.getDefaultProduct();
     }
   }
 }

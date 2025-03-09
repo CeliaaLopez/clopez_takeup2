@@ -1,0 +1,81 @@
+[
+  {
+    "product": "Bacon",
+    "price": 15.99,
+    "currency": "€",
+    "rating": 5,
+    "favorite": false,
+    "description": "El auténtico best seller de esta casa. Picamos la carne en la plancha y la mezclamos con bacon, cebolla crunchy y queso americano. ¡Una vez que la pruebas no puedes dejar de pensar en ella!",
+    "similarProducts": [
+      { "product": "Retro", "price": 16.99, "currency": "€", "rating": 4.3 },
+      { "product": "Hat Trick", "price": 16.99, "currency": "€", "rating": 2 }
+    ],
+    "reviews": [
+      {
+        "image": "",
+        "name": "Homer J. Simpson",
+        "rating": 5,
+        "opinion": "¡Increíble! La carne jugosa y el bacon crujiente hacen una combinación perfecta.",
+        "date": "01-01-2025, 22:22"
+      },
+      {
+        "image": "",
+        "name": "Marge Simpson",
+        "rating": 5,
+        "opinion": "Me gustó mucho, aunque para mi gusto tenía demasiado bacon.",
+        "date": "01-01-2025, 22:22"
+      }
+    ]
+  },
+  {
+    "product": "Retro",
+    "price": 14.99,
+    "currency": "€",
+    "rating": 4.3,
+    "favorite": false,
+    "description": "Una receta clásica con carne, queso americano, cebolla morada a la plancha, tomate, lechuga batavia, pepinillos y nuestras salsas especiales.",
+    "similarProducts": [
+      { "product": "Bacon", "price": 15.99, "currency": "€", "rating": 5 },
+      { "product": "Donut", "price": 20, "currency": "€", "rating": 3.8 }
+    ],
+    "reviews": [
+      {
+        "image": "",
+        "name": "Bart Simpson",
+        "rating": 4.3,
+        "opinion": "Muy buena, aunque me hubiera gustado un poco más de salsa.",
+        "date": "09-02-2025, 19:25"
+      }
+    ]
+  },
+  {
+    "product": "Donut",
+    "price": 20,
+    "currency": "€",
+    "rating": 3.8,
+    "favorite": false,
+    "description": "La Golden Glaze: doble smash con mucho queso americano, bacon bits y un huevo frito entre dos donuts glaseados.",
+    "reviews": []
+  },
+  {
+    "product": "Hat Trick",
+    "price": 14.99,
+    "currency": "€",
+    "rating": 2,
+    "favorite": false,
+    "description": "Tres carnes smash, queso americano, queso scamorza ahumado, cebolla morada a la plancha y nuestra salsa especial.",
+    "similarProducts": [
+      { "product": "Retro", "price": 16.99, "currency": "€", "rating": 4.8 },
+      { "product": "Bacon", "price": 15.99, "currency": "€", "rating": 5 }
+    ],
+    "reviews": [
+      {
+        "image": "",
+        "name": "Ned Flanders",
+        "rating": 2,
+        "opinion": "Buena hamburguesa, pero me gustaría que la carne estuviera un poco más hecha.",
+        "date": "03-04-2025, 09:45"
+      }
+    ]
+  }
+]

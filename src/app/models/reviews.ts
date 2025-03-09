@@ -3,5 +3,5 @@ export interface Reviews {
   name: string
   rating: number
   opinion: string
-  date: string
+  date: Date
 }
