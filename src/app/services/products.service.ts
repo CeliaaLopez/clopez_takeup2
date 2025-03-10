@@ -15,7 +15,17 @@ export class ProductsService {
   private productsListSubject = new BehaviorSubject<ProductList[]>([]);
   private colorBtnAddMap = new Map<string, string>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.loadProductsFromLocalStorage();
+  }
+
+  private loadProductsFromLocalStorage(): void {
+    const storedProducts = localStorage.getItem('listProducts');
+    if (storedProducts) {
+      this.productsList = JSON.parse(storedProducts);
+      this.productsListSubject.next(this.productsList);
+    }
+  }
 
   getProducts(): Observable<Product[]> {
     if (this.data.length) {
@@ -42,7 +52,11 @@ export class ProductsService {
     } else {
       this.productsList.push({ ...product, quantity: 1 });
     }
+
+    this.saveToLocalStorage();
+
     this.productsListSubject.next(this.productsList);
+
     this.changeColorProductAdd(product);
   }
 
@@ -79,5 +93,9 @@ export class ProductsService {
       similarProducts: [],
       reviews: [],
     };
+  }
+
+  private saveToLocalStorage(): void {
+    localStorage.setItem('listProducts', JSON.stringify(this.productsList));
   }
 }

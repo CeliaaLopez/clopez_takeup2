@@ -7,6 +7,7 @@ import { ProductReviewsComponent } from './product-reviews/product-reviews.compo
 import { ProductsSimilarsComponent } from './products-similars/products-similars.component';
 import { ComponentsModule } from '../components.module';
 import { ProductComponent } from './product/product.component';
+import { ProductsListComponent } from './products-list/products-list.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { ProductComponent } from './product/product.component';
     ProductShowComponent,
     ProductReviewsComponent,
     ProductsSimilarsComponent,
+    ProductsListComponent,
   ],
   imports: [CommonModule, ProductsRoutingModule, ComponentsModule],
   exports: [
@@ -23,6 +25,7 @@ import { ProductComponent } from './product/product.component';
     ProductShowComponent,
     ProductReviewsComponent,
     ProductsSimilarsComponent,
+    ProductsListComponent,
   ],
 })
 export class ProductsModule {}

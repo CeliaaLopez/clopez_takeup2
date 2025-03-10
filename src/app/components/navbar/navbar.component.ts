@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core'
+import { Component, Input } from '@angular/core'
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +6,5 @@ import { Component, Input, Output } from '@angular/core'
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  @Input() totalProductsAdd: number = 0;
+  @Input() totalProducts: number = 0;
 }

@@ -6,15 +6,16 @@ import { ComponentsModule } from './modules/components.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProductsService } from './services/products.service';
 import { DateFormatInterceptor } from './date.interceptor';
-import { ProductsListComponent } from './modules/products/products-list/products-list.component';
+import { ProductsModule } from './modules/products/products.module';
 
 @NgModule({
-  declarations: [AppComponent, ProductsListComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ComponentsModule,
     HttpClientModule,
+    ProductsModule,
   ],
   providers: [
     ProductsService,

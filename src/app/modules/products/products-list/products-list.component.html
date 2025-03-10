@@ -1,1 +1,31 @@
-<p>products-list works!</p>
+<app-navbar [totalProducts]="totalProducts"></app-navbar>
+<div class="container-flex">
+  <div class="row mt-5 text-center">
+    <div class="col-md-12">
+      <h3>Productos añadidos al carrito</h3>
+    </div>
+  </div>
+
+<div class="row mt-5 text-center">
+  <div class="col-md-12 ">
+    <ng-container *ngIf="productsCast.length > 0; else noProducts">
+      <div *ngFor="let cast of productsCast; let index = index" class="row align-items-center mt-3">
+        <div class="col-md-6 text-md-end">
+          <img src="/assets/{{ cast.product }}.png" alt="" class="img-fluid" />
+        </div>
+        <div class="col-md-6 text-md-start">
+          <p>{{ cast.product }} - {{ cast.price }}{{ cast.currency }}</p>
+          <p>Cantidad: {{cast.quantity}}</p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #noProducts>
+  <div class="row text-center">
+    <div class="col-md-12">
+      <p>No hay productos añadidos al carrito.</p>
+    </div>
+  </div>
+</ng-template>

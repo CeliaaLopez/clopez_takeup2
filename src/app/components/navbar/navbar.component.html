@@ -10,17 +10,19 @@
     </button>
     <div class="collapse navbar-collapse ms-auto text-center" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto d-flex align-items-center">
-        <a routerLinkActivate="activate" class="nav-link border-end px-4" href="/products">Home</a>
-        <a routerLinkActivate="activate" class="nav-link border-end px-4" href="/aboutus">About</a>
-        <a routerLinkActivate="activate" class="nav-link border-end px-4" href="/guarda">Guarda</a>
-        <router-outlet></router-outlet>
-        <form class="container-fluid mt-1 ">
+        <a routerLink="/products" routerLinkActive="active" class="nav-link border-end px-4">Home</a>
+        <a routerLink="/aboutus" routerLinkActive="active" class="nav-link border-end px-4">About</a>
+        <a routerLink="/guarda" routerLinkActive="active" class="nav-link border-end px-4">Guarda</a>
+        <form class="container-fluid mt-1">
           <button type="button" class="btn btn-secondary mx-2 ps-1">
-            <span *ngIf="totalProductsAdd > 0">{{ totalProductsAdd }}</span>
-            <img class="mb-1 mx-1" src="assets/carrito.png" alt="imagen carrito de la compra"> Tu Carrito
+            <span *ngIf="totalProducts > 0">{{ totalProducts }}</span>
+            <img class="mb-1 mx-1" src="assets/carrito.png" alt="imagen carrito de la compra">
+            <a routerLink="/products/list">Tu carrito</a>
           </button>
         </form>
       </div>
     </div>
   </div>
 </nav>
+
+<router-outlet></router-outlet>

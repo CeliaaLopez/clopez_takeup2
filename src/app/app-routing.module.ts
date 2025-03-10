@@ -19,10 +19,8 @@ const routes: Routes = [
   {
     path: 'guarda',
     loadChildren: () =>
-      import('./modules/guarda/guarda.module').then(
-        (m) => m.GuardaModule
-      ),
-    canActivate: [routeGuard]
+      import('./modules/guarda/guarda.module').then((m) => m.GuardaModule),
+    canActivate: [routeGuard],
   },
   { path: '**', redirectTo: 'products' },
 ];

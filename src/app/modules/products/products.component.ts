@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { ProductsService } from 'src/app/services/products.service';
 import { Subscription } from 'rxjs';
+import { ProductList } from 'src/app/models/product-list';
 
 @Component({
   selector: 'app-products',
@@ -10,7 +11,7 @@ import { Subscription } from 'rxjs';
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
-  productsCast: Product[] = [];
+  productsCast: ProductList[] = [];
   selectedProduct!: Product;
   filteredProducts: Product[] = [];
   selectedProductIndex: number = 0;
@@ -22,6 +23,7 @@ export class ProductsComponent implements OnInit {
   colorBottonReview = 'secondary';
   colorBottonPrice = 'secondary';
   totalProducts = 0;
+  showCart = false;
 
   private colorBtnAddSubscription: Subscription = Subscription.EMPTY;
 
@@ -40,6 +42,14 @@ export class ProductsComponent implements OnInit {
     this.productsService.getProductsAdd().subscribe((data) => {
       this.totalProducts = data.length;
       this.productsCast = data;
+      console.log(this.totalProducts);
+      this.updateButtonColors();
+    });
+  }
+
+  updateButtonColors(): void {
+    this.productsCast.forEach((product) => {
+      this.colorBtnAdd = this.productsService.getColorForProduct(product);
     });
   }
 
@@ -56,10 +66,7 @@ export class ProductsComponent implements OnInit {
     const productToAdd = this.productsService.getData()[index];
     this.productsService.addProduct(productToAdd);
     this.colorBtnAdd = this.productsService.getColorForProduct(productToAdd);
-  }
-
-  totalProductsAdd(): number {
-    return this.totalProducts;
+    this.totalProducts = this.productsCast.length;
   }
 
   updateBackground(): void {
